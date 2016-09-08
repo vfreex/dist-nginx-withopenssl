@@ -17,6 +17,7 @@ Requires(post): chkconfig
 #BuildRequires: openssl-devel
 BuildRequires: perl
 BuildRequires: GeoIP-devel
+%define with_http2 1
 %endif
 
 %if 0%{?rhel}  == 6
@@ -32,9 +33,9 @@ BuildRequires: perl-ExtUtils-Embed
 BuildRequires: GeoIP-devel
 %endif
 
-%if 0%{?rhel}  == 7
+%if 0%{?rhel} >= 7 || 0%{?fedora} >= 22
 %define _group System Environment/Daemons
-%define epoch 1
+#%define epoch 1
 %define with_http2 1
 Epoch: %{epoch}
 Requires(pre): shadow-utils
